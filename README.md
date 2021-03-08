@@ -13,6 +13,10 @@ This repo houses a [R](https://www.r-project.org/) function that computes the cr
 
 [monte_carlo.R](./test/code/monte_carlo.R) asserts expected coverage rates for select data generating processes 
 
+## Running Code
+
+Both the example and unit-test code can be run via [make.py](make.py)
+
 ## Author
 
 Ryan Kessler
