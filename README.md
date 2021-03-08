@@ -1,5 +1,5 @@
 
-# Computing Simultaneous Confidence Bands in Stata
+# Computing Simultaneous Confidence Bands in R
 
 Simultaneous confidence bands are versatile tools for visualizing estimation uncertainty for parameter vectors ([Montiel Olea and Plagborg-Møller 2019](https://onlinelibrary.wiley.com/doi/full/10.1002/jae.2656)). 
 
