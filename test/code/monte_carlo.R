@@ -1,5 +1,5 @@
 source('../../r/estimate_supt_confidence_bands.R')
-set.seed(19280)
+set.seed(19240)
 
 main <- function() {
     num_reps      <- 2500
@@ -32,7 +32,7 @@ main <- function() {
     print("SIMULTANEOUS SUP-T COVERAG WITH MULTIPLE REGRESSORS:")
     print(supt_coverage)
     
-    stopifnot(abs(pw_coverage - conf_level) > 4 * cov_tolerance)
+    stopifnot(abs(pw_coverage - conf_level) > 3 * cov_tolerance)
     stopifnot(abs(supt_coverage - conf_level) <= cov_tolerance)
 }
 
