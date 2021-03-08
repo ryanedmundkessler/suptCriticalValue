@@ -7,7 +7,7 @@ This repo houses a [R](https://www.r-project.org/) function that computes the cr
 
 ## Example
 
-[example.do](./example/code/example.R) shows how the simultaneous sup-t confidence bands can be estimated alongside their pointwise counterparts 
+[example.R](./example/code/example.R) shows how the simultaneous sup-t confidence bands can be estimated alongside their pointwise counterparts 
 
 ## Unit Tests
 
