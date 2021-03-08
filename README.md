@@ -7,21 +7,15 @@ This repo houses a [R](https://www.r-project.org/) function that computes the cr
 
 ## Example
 
-[example.do](./example/code/example.do) shows how the simultaneous sup-t confidence bands can be estimated and plotted alongside their pointwise counterparts 
+[example.do](./example/code/example.R) shows how the simultaneous sup-t confidence bands can be estimated alongside their pointwise counterparts 
 
 ## Unit Tests
 
-The repo houses two sets of unit tests:
-
-* [basic_functionality.do](./test/code/basic_functionality.do) : This set asserts basic functionality
-* [monte_carlo.do](./test/code/monte_carlo.do) : This set asserts expected coverage rates for a given data generating process 
-
-Both sets of unit tests can be executed by running [make.py](./make.py).
+[monte_carlo.R](./test/code/monte_carlo.R) asserts expected coverage rates for select data generating processes 
 
 ## Author
 
 Ryan Kessler
-<br>Brown University
 <br>Email: ryan.edmund.kessler@gmail.com
 
 ## License

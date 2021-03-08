@@ -1,36 +1,30 @@
-source('../../r/gaussian_empirical_bayes.R')
+source('../../r/estimate_supt_confidence_bands.R')
 set.seed(19281)
 
 main <- function() {
+    conf_level  <- 0.95
 
-    num_obs  <- 5000
-    mu       <- 1
-    sigma_sq <- 4
+    model       <- lm(Price ~ Weight + Wheelbase + Cylinders, data=Cars93)
 
-    data  <- simulate_data(num_obs = num_obs, mu = mu, sigma_sq = sigma_sq)
-    theta <- estimate_hyperparameters(beta = data$beta_hat, tau_sq = data$tau_sq)
+    beta        <- matrix(coef(model))
+    vcov_matrix <- vcov(model)
+    std_error   <- sqrt(diag(vcov_matrix))
 
-    posterior_params <- estimate_posterior_parameters(beta     = data$beta_hat, 
-                                                      tau_sq   = data$tau_sq, 
-                                                      mu       = theta$mu, 
-                                                      sigma_sq = theta$sigma_sq)
+    pw_crit     <- qt(1 - ((1 - conf_level) / 2), model$df.residual) 
+    supt_crit   <- estimate_supt_critical_value(vcov_matrix = vcov_matrix)
 
-    png("../output/gaussian_eb_shrinkage.png") 
-    plot(data$tau_sq, posterior_params$mu, ylim = c(-6, 6), 
-         xlab = expression(hat(tau[i])^2), ylab = expression(tilde(mu)[i]))
-    dev.off()
-}
+    pw_ci_lb    <- beta - pw_crit * std_error 
+    pw_ci_ub    <- beta + pw_crit * std_error 
+    supt_ci_lb  <- beta - supt_crit * std_error 
+    supt_ci_ub  <- beta + supt_crit * std_error 
 
-simulate_data <- function(num_obs, mu, sigma_sq) {
-  
-    beta     <- rnorm(num_obs, mu, sqrt(sigma_sq))
-    tau_sq   <- runif(num_obs, min= (sigma_sq / 100), max= (100 * sigma_sq))
-    beta_hat <- rnorm(num_obs, beta, sqrt(tau_sq))
-  
-    return_list <- list(beta_hat = beta_hat,
-                        tau_sq   = tau_sq)
-  
-    return(return_list)
+    print("POINTWISE 95 PERCENT CONFIDENCE INTERVAL:")
+    print(pw_ci_lb)
+    print(pw_ci_ub)
+
+    print("SIMULTANEOUS SUP-T 95 PERCENT CONFIDENCE INTERVAL:")
+    print(supt_ci_lb)
+    print(supt_ci_ub)
 }
 
 main()
