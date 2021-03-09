@@ -1,4 +1,5 @@
-source('../../r/estimate_supt_confidence_bands.R')
+library(MASS)
+library(suptCriticalValue)
 set.seed(19281)
 
 main <- function() {
@@ -11,7 +12,7 @@ main <- function() {
     std_error   <- sqrt(diag(vcov_matrix))
 
     pw_crit     <- qt(1 - ((1 - conf_level) / 2), model$df.residual) 
-    supt_crit   <- estimate_supt_critical_value(vcov_matrix = vcov_matrix)
+    supt_crit   <- suptCriticalValue(vcov_matrix = vcov_matrix)
 
     pw_ci_lb    <- beta - pw_crit * std_error 
     pw_ci_ub    <- beta + pw_crit * std_error 

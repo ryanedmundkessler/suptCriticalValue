@@ -1,9 +1,10 @@
-source('../../r/estimate_supt_confidence_bands.R')
+library(MASS)
+library(suptCriticalValue)
 set.seed(19240)
 
 main <- function() {
     num_reps      <- 2500
-    num_obs       <- 200000
+    num_obs       <- 100000
     conf_level    <- 0.95
     cov_tolerance <- 0.02
     
@@ -80,7 +81,7 @@ determine_coverage <- function(data, multiple_regressors, conf_level = 0.95) {
     true_beta   <- rep(1, nrow(vcov_matrix))
     
     pw_crit     <- qt(1 - ((1 - conf_level) / 2), model$df.residual) 
-    supt_crit   <- estimate_supt_critical_value(vcov_matrix = vcov_matrix)
+    supt_crit   <- suptCriticalValue(vcov_matrix = vcov_matrix)
     
     pw_cover    <- is_beta_covered(beta = beta, vcov_matrix = vcov_matrix, 
                                    true_beta = true_beta, critical_value = pw_crit)

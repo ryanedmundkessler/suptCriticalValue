@@ -1,6 +1,4 @@
-library(MASS)
-
-estimate_supt_critical_value <- function(vcov_matrix, num_sim = 1000, conf_level = 0.95, seed = 192837) {
+suptCriticalValue <- function(vcov_matrix, num_sim = 1000, conf_level = 0.95, seed = 192837) {
 
     if (exists(".Random.seed")) {  
         seed_before_call <- .Random.seed
