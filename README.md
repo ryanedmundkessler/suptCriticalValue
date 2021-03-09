@@ -16,7 +16,7 @@ devtools::install_github("ryanedmundkessler/suptCriticalValue")
 
 ## Example
 
-The suptCriticalValue() function can be called as follows:
+The function can be called as follows:
 
 ``` r
 library(suptCriticalValue)
@@ -29,7 +29,7 @@ critical_value <- suptCriticalValue(vcov_matrix = matrix(1))
 
 ## Unit Tests
 
-[monte_carlo.R](./test/code/monte_carlo.R) asserts expected coverage rates for select data generating processes 
+[monte_carlo.R](./test/code/monte_carlo.R) asserts the resulting sup-t confidence bands have expected coverage under select data generating processes 
 
 ## Author
 
