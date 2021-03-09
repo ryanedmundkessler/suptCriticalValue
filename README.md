@@ -16,7 +16,16 @@ devtools::install_github("ryanedmundkessler/suptCriticalValue")
 
 ## Example
 
-[example.R](./example/code/example.R) shows how the simultaneous sup-t confidence bands can be estimated alongside their pointwise counterparts 
+The suptCriticalValue() function can be called as follows:
+
+``` r
+library(suptCriticalValue)
+library(MASS)
+
+critical_value <- suptCriticalValue(vcov_matrix = matrix(1))
+```
+
+[example.R](./example/code/example.R) shows how the resulting sup-t critical values can be used to construct sup-t confidence bands 
 
 ## Unit Tests
 
