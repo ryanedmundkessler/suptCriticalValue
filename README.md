@@ -7,7 +7,7 @@ This repo houses a [R](https://www.r-project.org/) package that computes the cri
 
 ## Installation
 
-You can install the package from [GitHub](https://github.com/) via:
+You can install the package from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("devtools")
