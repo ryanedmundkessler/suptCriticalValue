@@ -29,7 +29,7 @@ critical_value <- suptCriticalValue(vcov_matrix = matrix(1))
 
 ## Unit Tests
 
-[monte_carlo.R](./test/code/monte_carlo.R) asserts the resulting sup-t confidence bands have expected coverage under select data generating processes 
+[monte_carlo.R](./test/code/monte_carlo.R) asserts that the resulting sup-t confidence bands have expected coverage under select data generating processes 
 
 ## Author
 
