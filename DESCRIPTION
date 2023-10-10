@@ -3,11 +3,12 @@ Type: Package
 Title: Computes critical values underlying simultaneous sup-t confidence bands
 Version: 0.1.0
 Authors@R: c(person("Ryan", "Kessler", email = "ryan.edmund.kessler@gmail.com", role = c("aut","cre")))
-Description: This package computes the critical values underlying the simultaneous sup-t confidence bands proposed in Montiel Olea and Plagborg-Møller (2019).
-License: MIT
+Description: This package computes the critical values underlying the simultaneous sup-t confidence bands proposed in Montiel Olea and Plagborg-Møller (2019) <https://doi.org/10.1002/jae.2656>.
 Encoding: UTF-8
 LazyData: true
 Imports:
     MASS
 Depends:
     R (>= 3.0)
+RoxygenNote: 7.2.3.9000
+License: MIT + file LICENSE
