@@ -4,12 +4,7 @@
 \alias{suptCriticalValue}
 \title{Create sup t critical value}
 \usage{
-suptCriticalValue(
-  vcov_matrix,
-  num_sim = 1000,
-  conf_level = 0.95,
-  seed = 192837
-)
+suptCriticalValue(vcov_matrix, num_sim = 1000, conf_level = 0.95, seed = NULL)
 }
 \arguments{
 \item{vcov_matrix}{Variance-covariance matrix}
@@ -18,7 +13,7 @@ suptCriticalValue(
 
 \item{conf_level}{Confidence level. Default is 0.95.}
 
-\item{seed}{Random seed. Default is 192837.}
+\item{seed}{Random seed if provided. Default is NULL.}
 }
 \value{
 Numeric. Sup t critical value. Multiple by the standard error to get the confidence interval length.

@@ -3,7 +3,7 @@
 #' @param vcov_matrix Variance-covariance matrix
 #' @param num_sim Number of bootstrap simulations. Default is 1000.
 #' @param conf_level Confidence level. Default is 0.95.
-#' @param seed Random seed. Default is 192837.
+#' @param seed Random seed if provided. Default is NULL.
 #'
 #' @return Numeric. Sup t critical value. Multiple by the standard error to get the confidence interval length.
 #' 
@@ -36,32 +36,26 @@
 #' ))
 #' 
 #' @export
-suptCriticalValue <- function(vcov_matrix, num_sim = 1000, conf_level = 0.95, seed = 192837) {
-  if (exists(".Random.seed")) {
-    seed_before_call <- .Random.seed
-    on.exit({
-      .Random.seed <<- seed_before_call
-    })
+suptCriticalValue <- function(vcov_matrix, num_sim = 1000, conf_level = 0.95, seed = NULL) {
+  if (!is.null(seed)) { 
+    if (exists(".Random.seed")) {
+      seed_before_call <- .Random.seed
+      on.exit({
+        .Random.seed <<- seed_before_call
+      })
+    }
+    set.seed(seed)
   }
-  set.seed(seed)
-
+  
   if (conf_level <= 0 | conf_level >= 1) {
     stop("Confidence level must live in (0, 1)")
   }
 
   std_errors <- t(sqrt(diag(vcov_matrix)))
   draws <- MASS::mvrnorm(n = num_sim, mu = rep(0, nrow(vcov_matrix)), Sigma = vcov_matrix)
-  t <- draws / (std_errors %x% matrix(rep(1, num_sim)))
-  t <- apply(abs(t), 1, FUN = max)
-  t <- sort(t)
 
-  conf_level_num_sim <- conf_level * num_sim
-
-  if (round(conf_level_num_sim) == conf_level_num_sim) {
-    critical_value <- (t[conf_level_num_sim] + t[conf_level_num_sim + 1]) / 2
-  } else {
-    critical_value <- t[floor(conf_level_num_sim) + 1]
-  }
+  t <- apply(draws, 1, FUN = function(x) max(abs(x / std_errors)))
+  critical_value <- as.numeric(stats::quantile(t, probs = conf_level))
 
   return(critical_value)
 }
