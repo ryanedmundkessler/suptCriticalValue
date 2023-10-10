@@ -7,9 +7,9 @@ Simultaneous confidence bands are versatile tools for visualizing
 estimation uncertainty for parameter vectors ([Montiel Olea and
 Plagborg-Møller 2019](https://doi.org/10.1002/jae.2656)).
 
-This repo houses a [R](https://www.r-project.org/) package that computes
-the critical values underlying the simultaneous sup-t confidence bands
-proposed in [Montiel Olea and Plagborg-Møller
+This repository houses a [R](https://www.r-project.org/) package that
+computes the critical values underlying the simultaneous sup-t
+confidence bands proposed in [Montiel Olea and Plagborg-Møller
 (2019)](https://doi.org/10.1002/jae.2656).
 
 ## Installation
